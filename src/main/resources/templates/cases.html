@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CMD</title>
+<style>
+
+</style>
+</head>
+<body>
+
+<h1>TEST COMMAND</h1>
+
+<form th:action="@{/process}" th:object="${input}" method="post">
+	Input: <br><br>
+	<textarea rows="2" cols="50" th:field="*{message}" id="myinputbox"></textarea>
+	<br><br>
+	<input type="submit" value="OK">
+	<button onclick="clear()">Clear</button>
+</form>
+
+<br>
+
+Output:
+<br><br>
+
+<textarea rows="30" cols="230" th:text="${output}" id="myoutput"></textarea>
+
+<br><br>
+<button onclick="myFunction()">Copy</button>
+
+<script>
+	function myFunction() {
+	  var copyText = document.getElementById("myoutput");
+	  copyText.select();
+	  copyText.setSelectionRange(0, 99999)
+	  document.execCommand("copy");
+	}
+	
+	function clear() {
+		document.getElementById("myinputbox").value = "";
+		alert("clicked.");
+	}
+</script>
+
+</body>
+</html>
